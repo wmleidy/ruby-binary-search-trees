@@ -196,7 +196,7 @@ class Tree
 
 end
 
-class Node
+class Node # a/k/a List
 	attr_accessor :value, :next
 
 	def initialize(value = nil)
@@ -219,6 +219,23 @@ class Node
 			pointer = pointer.next
 		end
 		true
+	end
+end
+
+class Array
+
+	# convert a sorted array into a balanced binary search tree
+	def to_bst(tree = nil)
+		return if arr.length == 0
+		mid = arr.length / 2
+		unless tree.nil?
+			tree.add_value(arr[mid])
+		else
+			tree = Tree.new(arr[mid])
+		end
+		to_bst(arr[0...mid], tree)
+		to_bst(arr[mid+1..-1], tree)
+		tree
 	end
 
 end

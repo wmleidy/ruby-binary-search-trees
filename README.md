@@ -22,6 +22,10 @@ Methods present:
 
 #leaf?
 #total_leaves
+
+#to_bst  (converts a sorted array into a height-balanced BST)
+
+(plus a few linked lists methods to assist with conversions, but the full class is a separate repo)
 ```
 
 What's missing? Well, a `#delete` method that works properly at a non-full root (I welcome any suggestions), and a `#rotation` method that would self-balance the tree when new items are added that cause the tree to become unbalanced. (There are many flavors of these: [click here](https://en.wikipedia.org/wiki/Self-balancing_binary_search_tree).)
