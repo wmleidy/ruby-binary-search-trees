@@ -92,6 +92,16 @@ class Tree
     end
   end
 
+  def subtree_of?(prospective_parent)
+    if prospective_parent.nil?
+      return false
+    elsif prospective_parent.identical_trees?(self)
+      return true
+    else
+      subtree_of?(prospective_parent.left) || subtree_of?(prospective_parent.right)
+    end
+  end
+
   # works properly (destructively) in most situations...
   # however, when deleting value at root of tree if one (or both) of its branches is nil,
   # then #delete will return the correct tree, but do so non-destructively

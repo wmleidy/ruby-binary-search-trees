@@ -12,9 +12,10 @@ Methods present:
 
 #size
 #height
+#height_balanced?
 #valid_bst?
 #identical_trees?
-#height_balanced?
+#subtree_of?
 
 #inorder   (traversal, w/ conversions to both a sorted array and an ascending linked list)
 #preorder  (traversal)
