@@ -8,7 +8,7 @@ Methods present:
 ```
 #add_value
 #has_value?
-#delete_value  (destructive except at a root with fewer than two children...needs to be fixed)
+#delete_value  (with one small bug, see .rb file)
 
 #size
 #height
