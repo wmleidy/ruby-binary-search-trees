@@ -16,7 +16,7 @@ Methods present:
 #identical_trees?
 #height_balanced?
 
-#inorder   (traversal, with conversions to both a sorted array and an ascending linked list)
+#inorder   (traversal, w/ conversions to both a sorted array and an ascending linked list)
 #preorder  (traversal)
 #postorder (traversal)
 
@@ -25,7 +25,8 @@ Methods present:
 
 #to_bst  (converts a sorted array into a height-balanced BST)
 
-(plus a few linked lists methods to assist with conversions, but the full class is a separate repo)
+...plus a few linked list methods to assist with conversions,
+but the full linked link class would be a separate repo (which I might post)
 ```
 
 What's missing? Well, a `#delete` method that works properly at a non-full root (I welcome any suggestions), and a `#rotation` method that would self-balance the tree when new items are added that cause the tree to become unbalanced. (There are many flavors of these: [click here](https://en.wikipedia.org/wiki/Self-balancing_binary_search_tree).)
