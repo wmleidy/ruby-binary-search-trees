@@ -95,8 +95,8 @@ class Tree
   def subtree_of?(prospective_parent)
     if prospective_parent.nil?
       return false
-    elsif prospective_parent.identical_trees?(self)
-      return true
+    elsif prospective_parent.value == subtree.value
+      return prospective_parent.identical_trees?(self)
     else
       subtree_of?(prospective_parent.left) || subtree_of?(prospective_parent.right)
     end
@@ -234,8 +234,9 @@ end
 
 class Array
 
-  # convert a sorted array into a balanced binary search tree
-  def to_bst(tree = nil)
+  # convert a pre-sorted array into a balanced binary search tree
+  # (could also call #sort on self to handle unsorted arrays, but this costs efficiency)
+  def to_bst(arr = self, tree = nil)
     return if arr.length == 0
     mid = arr.length / 2
     unless tree.nil?
