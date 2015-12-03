@@ -172,7 +172,25 @@ class Tree
     self.to_ll.sorted?
   end
 
-  ### both of these conversion methods are in-order traversals ###
+  # BREADTH-FIRST TRAVERSAL #
+
+  def breadth_first(root = self)
+    q = Queue.new
+    arr = []
+    q.enqueue(root)
+    until q.empty?
+      pointer = q.dequeue
+      arr << pointer.value
+      q.enqueue(pointer.left)  unless pointer.left.nil?
+      q.enqueue(pointer.right) unless pointer.right.nil?
+    end
+    arr
+  end
+
+  # DEPTH-FIRST TRAVERSALS #
+
+  ### both of these conversion methods are in-order traversals, ###
+  ### i.e. left node, current node, right node                  ###
   def to_a (root = self, array = [])
     to_a(root.left, array) unless root.left.nil?
     array << root.value
@@ -180,13 +198,13 @@ class Tree
     array
   end
 
-  def to_ll (root = self, list = Node.new)
+  def to_ll (root = self, list = List.new)
     to_ll(root.left, list) unless root.left.nil?
     list.value.nil? ? list.value = root.value : list << root.value
     to_ll(root.right, list) unless root.right.nil?
     list
   end
-  ### (i.e. left node, current node, right node)
+
 
   # pre-order traversal (current, left, right)
   def preorder (root = self, array = [])
@@ -206,7 +224,45 @@ class Tree
 
 end
 
-class Node # a/k/a List
+class Node
+  attr_accessor :value, :next
+
+  def initialize(value = nil)
+    @value = value
+    @next = nil
+  end
+end
+
+class Queue
+  def initialize
+    @first = nil
+    @last = nil
+  end
+
+  def enqueue(value)
+    node = Node.new(value)
+    if self.empty?
+      @first = node
+      @last = node
+    else
+      @last.next = node
+      @last = @last.next    
+    end
+    self
+  end
+
+  def dequeue
+    value = @first.value
+    @first = @first.next
+    value
+  end
+
+  def empty?
+    @first.nil?
+  end
+end
+
+class List
   attr_accessor :value, :next
 
   def initialize(value = nil)
@@ -218,7 +274,7 @@ class Node # a/k/a List
     if pointer.next
       pointer.next << value
     else
-      pointer.next = Node.new(value)
+      pointer.next = List.new(value)
     end
     self
   end

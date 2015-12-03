@@ -17,17 +17,19 @@ Methods present:
 #identical_trees?
 #subtree_of?
 
-#inorder   (traversal, w/ conversions to both a sorted array and an ascending linked list)
-#preorder  (traversal)
-#postorder (traversal)
+#breadth_first (breadth-first traversal)
+#inorder   (depth-first traversal, builds a sorted array or an ascending linked list)
+#preorder  (depth-first traversal)
+#postorder (depth-first traversal)
 
 #leaf?
 #total_leaves
 
 #to_bst  (converts a sorted array into a height-balanced BST)
 
-...plus a few linked list methods to assist with conversions,
-but the full linked link class would be a separate repo (which I might post)
+(fragments of Node, Queue, and LinkedList classes included to assist in operations,
+ which are of course better separated into individual files, which will happen if
+ this repo expands)
 ```
 
 What's missing? Well, a `#delete` method that works properly at a non-full root (I welcome any suggestions), and a `#rotation` method that would self-balance the tree when new items are added that cause the tree to become unbalanced. (There are many flavors of these: [click here](https://en.wikipedia.org/wiki/Self-balancing_binary_search_tree).)
